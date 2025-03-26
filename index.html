@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Esfera</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Calculadora de Esfera</h2>
+        <label for="raio">Digite o raio:</label>
+        <input type="number" id="raio" step="any">
+        <button onclick="calcularEsfera()">Calcular</button>
+        <p id="resultado"></p>
+    </div>
+
+    <script>
+        function calcularEsfera() {
+            let raio = parseFloat(document.getElementById("raio").value);
+            if (isNaN(raio) || raio <= 0) {
+                document.getElementById("resultado").innerHTML = "Por favor, insira um raio válido.";
+                return;
+            }
+            const pi = Math.PI;
+            let comprimento = 2 * pi * raio;
+            let area = pi * Math.pow(raio, 2);
+            let volume = (4 / 3) * pi * Math.pow(raio, 3);
+            document.getElementById("resultado").innerHTML = 
+                `Comprimento: ${comprimento.toFixed(2)} <br>
+                Área: ${area.toFixed(2)} <br>
+                Volume: ${volume.toFixed(2)}`;
+        }
+    </script>
+</body>
+</html>
